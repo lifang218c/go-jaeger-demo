@@ -1,10 +1,13 @@
+# 本文参考了：
+https://github.com/xinliangnote/go-jaeger-demo
+
+https://github.com/xinliangnote/go-gin-api
+
 ## 项目介绍
 
 这是一个 Jaeger 链路追踪的 Demo，里面包括 5 个 Service 端，如图所示：
 
 ![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_1.png)
-
-API 端为： [go-gin-api](https://github.com/xinliangnote/go-gin-api)。
 
 5 个 Service 端 Demo 分别是：
 
@@ -45,24 +48,19 @@ API 端为： [go-gin-api](https://github.com/xinliangnote/go-gin-api)。
 
 #### 1、部署 jaeger 服务
 
-下载地址：https://www.jaegertracing.io/download/
-
-我的电脑是 macOS 选择 -> Binaries -> macOS
-
-下载后并解压，会发现以下文件：
-
-- example-hotrod
-- jaeger-agent
-- jaeger-all-in-one
-- jaeger-collector
-- jaeger-ingester
-- jaeger-query
-
-
-进入到解压后的目录执行：
+选择docker安装：
 
 ```
-./jaeger-all-in-one
+docker run -d --name jaeger \
+  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+  -p 5775:5775/udp \
+  -p 6831:6831/udp \
+  -p 6832:6832/udp \
+  -p 5778:5778 \
+  -p 16686:16686 \
+  -p 14268:14268 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one
 ```
 
 目测启动后，访问地址：http://localhost:16686/
@@ -71,7 +69,20 @@ API 端为： [go-gin-api](https://github.com/xinliangnote/go-gin-api)。
 
 ![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_4.png)
 
-#### 2、启动 Service 服务
+
+#### 2、部署 mysql 服务
+
+选择docker安装：
+
+```
+docker run -itd -p 3306:3306 --name mysqltest --restart=always -e MYSQL_ROOT_PASSWORD=123456 mysql
+```
+
+然后执行命令：docker exec -it mysqltest /bin/bash
+
+能正确进入，代表安装成功！！
+
+#### 3、启动 Service 服务
 
 ```
 // 启动 Listen 服务
@@ -90,16 +101,9 @@ cd write && go run main.go
 cd sing && go run main.go
 ```
 
-#### 3、启动 API 服务
-
-```
-// 启用 go-gin-api 服务
-cd go-gin-api && go run main.go
-```
-
 #### 4、访问路由
 
-访问 API 项目：http://127.0.0.1:9999/jaeger_test
+访问 API 项目：http://127.0.0.1:9905/jaeger_test
 
 ## 效果
 
@@ -112,3 +116,4 @@ cd go-gin-api && go run main.go
 :star2: 关注微信公众号「新亮笔记」
 
 ![](https://github.com/xinliangnote/Go/blob/master/00-基础语法/images/qr.jpg)
+
