@@ -1,7 +1,7 @@
 # 本文参考了：
-https://github.com/xinliangnote/go-jaeger-demo
+[go-jaeger-demo](https://github.com/xinliangnote/go-jaeger-demo)
 
-https://github.com/xinliangnote/go-gin-api
+[go-gin-api](https://github.com/xinliangnote/go-gin-api)
 
 ## 项目介绍
 
@@ -110,10 +110,3 @@ cd sing && go run main.go
 ![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_2.png)
 
 ![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_3.png)
-
-## 学习交流
-
-:star2: 关注微信公众号「新亮笔记」
-
-![](https://github.com/xinliangnote/Go/blob/master/00-基础语法/images/qr.jpg)
-
