@@ -1,7 +1,7 @@
 # 本文参考了：
-[go-jaeger-demo](https://github.com/xinliangnote/go-jaeger-demo)
+[go-jaeger-demo](https://github.com/xinliangnote/go-jaeger-demo "https://github.com/xinliangnote/go-jaeger-demo")
 
-[go-gin-api](https://github.com/xinliangnote/go-gin-api)
+[go-gin-api](https://github.com/xinliangnote/go-gin-api "https://github.com/xinliangnote/go-gin-api")
 
 ## 项目介绍
 
@@ -11,30 +11,11 @@
 
 5 个 Service 端 Demo 分别是：
 
-#### 听（listen）
 
-- 端口：9901
-- 通讯：gRPC
-
-#### 说（speak）
-
-- 端口：9902
-- 通讯：gRPC
-
-#### 读（read）
-
-- 端口：9903
-- 通讯：gRPC
-
-#### 写（write）
-
-- 端口：9904
-- 通讯：gRPC
-
-#### 唱（sing）
-
-- 端口：9905
-- 通讯：HTTP
+| 听（listen） |     说（speak）      |  读（read） | 写（write） | 唱（sing） |
+|-----------|:-------------:|------:|------:|--------:|
+| 端口：9901   |  端口：9902 | 端口：9903 |端口：9904 | 端口：9905 |
+| 通讯：gRPC   |    通讯：gRPC   |   通讯：gRPC |通讯：gRPC | 通讯：HTTP |
 
 其中服务之间又相互调用：
 
@@ -107,6 +88,6 @@ cd sing && go run main.go
 
 ## 效果
 
-![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_2.png)
+![](https://github.com/lifang218c/go-jaeger-demo/blob/master/static/images/jaegerWX20240304-104245@2x.png)
 
-![](https://github.com/xinliangnote/Go/blob/master/03-go-gin-api%20%5B文档%5D/images/jaeger_demo_3.png)
+![](https://github.com/lifang218c/go-jaeger-demo/blob/master/static/images/2jaegerWX20240304-104354.png)
