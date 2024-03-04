@@ -44,7 +44,7 @@ func HttpGet(url string, c *gin.Context) (string, error) {
 
 		injectErr := tracer.(opentracing.Tracer).Inject(span.Context(), opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
 		if injectErr != nil {
-			log.Fatalf("%s: Couldn't inject headers", err)
+			log.Fatalf("%s: Couldn't inject headers", injectErr)
 		}
 	}
 
